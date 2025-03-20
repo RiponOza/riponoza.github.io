@@ -1,18 +1,488 @@
-<!doctype html>
-<title>Site Maintenance</title>
-<style>
-  body { text-align: center; padding: 150px; }
-  h1 { font-size: 50px; }
-  body { font: 20px Helvetica, sans-serif; color: #333; }
-  article { display: block; text-align: left; width: 650px; margin: 0 auto; }
-  a { color: #dc8100; text-decoration: none; }
-  a:hover { color: #333; text-decoration: none; }
-</style>
-
-<article>
-    <h1>We&rsquo;ll be back soon!</h1>
-    <div>
-        <p>Sorry for the inconvenience but we&rsquo;re performing some maintenance at the moment. We&rsquo;ll be back online shortly!</p>
-        <p>&mdash; Ripon</p>
-    </div>
-</article>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ripon Oza - SDET | Professional Resume</title>
+    <style>
+        :root {
+            --primary-color: #1e88e5;
+            --secondary-color: #f5f5f5;
+            --text-color: #333;
+            --text-light: #666;
+            --accent-color: #0d47a1;
+            --border-color: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #fafafa;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: var(--accent-color);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            margin-bottom: 20px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+        }
+        
+        .name {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .nav {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+        }
+        
+        .nav li a {
+            display: block;
+            padding: 15px 20px;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+        
+        .nav li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .section {
+            padding: 50px 0;
+        }
+        
+        .section:nth-child(odd) {
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 15px auto 0;
+        }
+        
+        .experience-item, .education-item {
+            margin-bottom: 40px;
+            border-left: 3px solid var(--primary-color);
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .experience-item::before, .education-item::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            left: -9px;
+            top: 5px;
+        }
+        
+        .job-title, .degree {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--accent-color);
+        }
+        
+        .company, .university {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .job-date, .edu-date {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+        
+        .job-description ul {
+            padding-left: 20px;
+        }
+        
+        .job-description li {
+            margin-bottom: 8px;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .skill-category {
+            flex: 1 1 300px;
+            max-width: 380px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .category-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-item {
+            background-color: var(--secondary-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .certificates {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .certificate-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .certificate-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .certificate-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+        
+        .certificate-link {
+            margin-top: 10px;
+            display: inline-block;
+        }
+        
+        .interests {
+            text-align: center;
+        }
+        
+        .interest-item {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        footer {
+            background-color: var(--accent-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .header-content {
+                padding: 0 20px;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+            
+            .title {
+                font-size: 1.2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="profile-img">RO</div>
+                <h1 class="name">Ripon Oza</h1>
+                <h2 class="title">Software Development Engineer in Test (SDET)</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <a href="mailto:riponoja9@gmail.com">riponoja9@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <a href="tel:+919019766909">+91-9019766909</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>Bangalore, India</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>🔗</span>
+                        <a href="https://linkedin.com/in/riponoza" target="_blank">linkedin.com/in/riponoza</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#interests">Interests</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main>
+        <section id="experience" class="section">
+            <div class="container">
+                <h2 class="section-title">Work Experience</h2>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">SDET</h3>
+                    <div class="company">Akamai</div>
+                    <div class="job-date">January 2023 - Present | Bangalore, India</div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Engaged in both manual and automated testing methodologies for Akamai AppBattery (PaaS).</li>
+                            <li>Conducted rigorous dev-qa testing for each successive release of AppBattery.</li>
+                            <li>Developed Python automation scripts to enhance test coverage and streamline manual testing processes across all releases.</li>
+                            <li>Managed and maintained three test clusters comprising approximately 40 hosts, resolving issues and debugging challenges encountered within these clusters.</li>
+                            <li>Collaborated closely with the Development team to recommend and implement additional test coverage for unit tests.</li>
+                            <li>Contributed to designing the test strategy for the Next Gen AppBattery and developed automation test scripts for its APIs.</li>
+                            <li>Supported the onboarding of customer apps to the Next Gen AppBattery platform.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">Assistant System Engineer</h3>
+                    <div class="company">Tata Consultancy Services</div>
+                    <div class="job-date">October 2021 - December 2022 | Bangalore, India</div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Performed manual and automation testing on Solidfire Storage and Compute nodes for NetApp.</li>
+                            <li>Worked with various networking and storage concepts including SAN, iSCSI, Fibre Channel, DNS, NTP, HTTP, SSH, etc.</li>
+                            <li>Created automation scripts for various test cases using Python3 and Jenkins.</li>
+                            <li>Worked on HCI (Hyperconverged Infrastructure) using Solidfire Storage and Compute Nodes.</li>
+                            <li>Maintained multiple Solidfire HCI and AFA Storage clusters using NetApp HCC (Hybrid Cloud Control).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="education" class="section">
+            <div class="container">
+                <h2 class="section-title">Education</h2>
+                
+                <div class="education-item">
+                    <h3 class="degree">BTech in Information Technology</h3>
+                    <div class="university">Gauhati University</div>
+                    <div class="edu-date">July 2017 - July 2021 | Guwahati, India</div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="skills" class="section">
+            <div class="container">
+                <h2 class="section-title">Skills</h2>
+                
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3 class="category-title">Programming & Testing</h3>
+                        <div class="skills-list">
+                            <span class="skill-item">Python 3</span>
+                            <span class="skill-item">Pytest</span>
+                            <span class="skill-item">Locust</span>
+                            <span class="skill-item">Automation</span>
+                            <span class="skill-item">Manual Testing</span>
+                            <span class="skill-item">SQL</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3 class="category-title">DevOps & Tools</h3>
+                        <div class="skills-list">
+                            <span class="skill-item">CI/CD</span>
+                            <span class="skill-item">Jenkins</span>
+                            <span class="skill-item">Docker</span>
+                            <span class="skill-item">Git & Bitbucket</span>
+                            <span class="skill-item">Linux</span>
+                            <span class="skill-item">K8s</span>
+                            <span class="skill-item">ArgoCD</span>
+                            <span class="skill-item">Ansible</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3 class="category-title">Other Technical Skills</h3>
+                        <div class="skills-list">
+                            <span class="skill-item">Swagger UI</span>
+                            <span class="skill-item">Jira</span>
+                            <span class="skill-item">Agile</span>
+                            <span class="skill-item">Cloud (Akamai Linode)</span>
+                            <span class="skill-item">Computer Networking</span>
+                            <span class="skill-item">Grafana</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="certificates" class="section">
+            <div class="container">
+                <h2 class="section-title">Certificates</h2>
+                
+                <div class="certificates">
+                    <div class="certificate-item">
+                        <h3 class="certificate-title">HackerRank Python</h3>
+                        <a href="https://www.hackerrank.com/certificates/6670e67fb798" class="certificate-link" target="_blank">View Certificate</a>
+                    </div>
+                    
+                    <div class="certificate-item">
+                        <h3 class="certificate-title">HackerRank Java</h3>
+                        <a href="https://www.hackerrank.com/certificates/6670e67fb798" class="certificate-link" target="_blank">View Certificate</a>
+                    </div>
+                    
+                    <div class="certificate-item">
+                        <h3 class="certificate-title">HackerRank SQL</h3>
+                        <a href="https://www.hackerrank.com/certificates/c4c16cf9fa88" class="certificate-link" target="_blank">View Certificate</a>
+                    </div>
+                    
+                    <div class="certificate-item">
+                        <h3 class="certificate-title">HackerRank Problem Solving</h3>
+                        <a href="https://www.hackerrank.com/certificates/9ed0bf9440c6" class="certificate-link" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="interests" class="section">
+            <div class="container">
+                <h2 class="section-title">Interests</h2>
+                
+                <div class="interests">
+                    <div class="interest-item">Sketching and Drawing</div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Ripon Oza. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
